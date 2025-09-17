@@ -1,0 +1,104 @@
+Analysis Report: Pizza Sales Dataset
+This report summarizes the data analysis performed on the provided pizza sales dataset, covering data loading and cleaning, exploratory data analysis (EDA), correlation analysis, predictive modeling, and customer segmentation.
+
+1. Data Loading and Cleaning
+What was done: 
+The dataset was loaded from an Excel file into a pandas DataFrame. Missing values were handled, and date/time columns were converted to datetime objects.
+
+How it was done:
+The pandas library was used to read the Excel file.
+Missing values in numerical columns were filled with the mean of the column, and missing values in categorical columns were filled with the mode.
+The pd.to_datetime() function was used to convert the 'Order Time' and 'Delivery Time' columns to datetime objects.
+
+Methods used:
+Pandas for data manipulation (read_excel, fillna, to_datetime, info).
+Reasoning:
+Loading the data into a DataFrame is the first step for any analysis in Python.
+Handling missing values is crucial to prevent errors and ensure the accuracy of subsequent analyses.
+Converting date/time columns allows for time-based analysis and feature extraction (like extracting the month).
+
+2. Exploratory Data Analysis (EDA)
+What was done: 
+Descriptive statistics were summarized, distributions of key variables were analyzed, data was grouped by categories, and various visualizations were created.
+
+How it was done:
+The describe() method was used to get summary statistics for numerical columns.
+The value_counts() method was used to examine the frequency of categories in categorical columns.
+Data was grouped using the groupby() method to calculate mean delivery duration and delay for restaurants and locations.
+Visualizations (histograms, bar plots, line plot, heatmap) were created using matplotlib.pyplot and seaborn.
+
+Methods used:
+Pandas for data aggregation (describe, value_counts, groupby, mean, reset_index).
+Matplotlib and Seaborn for data visualization (histplot, barplot, lineplot, heatmap, figure, subplot, title, xlabel, ylabel, xticks, tight_layout, show).
+
+Reasoning:
+Summarizing descriptive statistics provides a quick overview of the data's central tendency, dispersion, and shape.
+Analyzing distributions helps understand the spread and patterns of individual variables.
+Grouping data by categories allows for comparison of metrics across different segments (e.g., which restaurant has the highest average delay).
+Visualizations make it easier to identify trends, patterns, and outliers in the data.
+
+3. Correlation Analysis
+What was done: The linear relationships between numerical variables were explored.
+
+How it was done:
+Numerical columns were selected from the DataFrame.
+The correlation matrix was calculated using the corr() method.
+
+Methods used:
+Pandas for selecting columns and calculating correlation (select_dtypes, corr).
+
+Reasoning:
+Correlation analysis helps identify how different numerical variables are related to each other, which can inform feature selection for predictive modeling and provide insights into underlying factors.
+
+4. Predictive Modeling (Regression)
+What was done:
+Regression models were built to predict 'Delivery Duration (min)'. The data was prepared, multiple models were trained and evaluated, and the best performing model was identified and used for prediction and analysis.
+
+How it was done:
+Features and the target variable were selected. Identifier, date/time, and target-related columns were excluded from features.
+Categorical features were converted into numerical format using one-hot encoding.
+The data was split into training and testing sets using train_test_split.
+Three regression models (Random Forest Regressor, Linear Regression, Decision Tree Regressor) were instantiated and trained using the training data (fit() method).
+Predictions were made on the testing data (predict() method).
+Evaluation metrics (MAE, MSE, RMSE, R-squared) were calculated using functions from sklearn.metrics.
+The model with the best performance (lowest RMSE, highest R-squared) was identified.
+The best model was used to make predictions, and a scatter plot of actual vs. predicted values was created.
+
+Methods used:
+Scikit-learn for model selection, training, evaluation, and splitting data (train_test_split, RandomForestRegressor, LinearRegression, DecisionTreeRegressor, mean_absolute_error, mean_squared_error, r2_score).
+Pandas for data manipulation (drop, get_dummies, DataFrame).
+NumPy for numerical operations (sqrt).
+Matplotlib for visualization (scatter, plot).
+
+Reasoning:
+Predictive modeling allows us to build models that can forecast future delivery durations based on input features.
+Splitting data into training and testing sets is essential for evaluating the model's performance on unseen data and preventing overfitting.
+One-hot encoding handles categorical variables so they can be used by most machine learning algorithms.
+Comparing multiple models helps in selecting the most accurate and robust model for the task.
+Evaluation metrics provide quantitative measures of how well the model is performing.
+Analyzing actual vs. predicted values helps visualize the model's performance and identify areas where it might be struggling.
+
+5. Customer Segmentation (Clustering)
+What was done: Customer segmentation was performed using clustering analysis based on order patterns. Relevant features were selected, data was preprocessed, the optimal number of clusters was determined, clustering was applied, and the resulting clusters were analyzed and interpreted.
+
+How it was done:
+Relevant features related to customer order patterns were selected.
+Numerical features were scaled using StandardScaler, and categorical features were one-hot encoded using OneHotEncoder.
+The elbow method (using inertia) and silhouette score were used to help determine the optimal number of clusters by fitting KMeans for a range of cluster numbers and plotting the results.
+K-Means clustering was applied with the chosen optimal number of clusters (3) using the KMeans class and fit() method.
+Cluster labels were assigned to the original DataFrame.
+The DataFrame was grouped by cluster label, and the mean of numerical features and value counts of categorical features were examined to characterize each cluster.
+
+Methods used:
+Pandas for feature selection, data manipulation, and grouping (select_dtypes, concat, groupby, mean, value_counts).
+Scikit-learn for preprocessing and clustering (StandardScaler, OneHotEncoder, KMeans, silhouette_score).
+Matplotlib for visualization (plotting elbow and silhouette scores).
+NumPy for identifying numerical columns.
+
+Reasoning:
+Customer segmentation helps identify distinct groups of customers with similar behaviors or characteristics.
+Clustering is an unsupervised learning technique suitable for grouping data points based on their similarity.
+Preprocessing (scaling and encoding) is necessary to prepare the data for clustering algorithms.
+Determining the optimal number of clusters helps in finding a meaningful and well-separated grouping of the data.
+Analyzing the characteristics of each cluster provides insights into the nature of each customer segment, which can be used for targeted marketing, service customization, and business strategy.
+This report covers the key steps and findings of the analysis performed on the pizza sales dataset.
