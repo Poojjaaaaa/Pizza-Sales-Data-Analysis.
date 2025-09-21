@@ -10,8 +10,8 @@ Data Loading and Cleaning:
 Loading the dataset from an Excel file.
 Handling missing values in numerical and categorical columns.
 Converting date/time columns to appropriate formats.
-Exploratory Data Analysis (EDA):
 
+Exploratory Data Analysis (EDA):
 Summarizing descriptive statistics for numerical features.
 Analyzing the distribution and frequency of various features (e.g., Pizza Size, Traffic Level).
 Grouping data to understand performance metrics by categories like Restaurant and Location.
